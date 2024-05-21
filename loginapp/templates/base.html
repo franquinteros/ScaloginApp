@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Scalogin APP</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+
+  <nav>
+    <ul>
+      <li>
+        <a href="/">Scalogin Home</a>
+      </li>
+      <li>
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      {% if user.is_authenticated %}
+      <li>
+        <a href="/logout">Logout</a>
+      </li>
+      {% else %}
+      <li>
+        <a href="/signup">Signup</a>
+      </li>
+      <li>
+        <a href="/signin">Signin</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <body>
+    {% block content %} {% endblock %}
+  </body>
+</html>
