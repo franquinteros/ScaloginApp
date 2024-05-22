@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from loginapp import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,3 +27,5 @@ urlpatterns = [
     path('logout/', views.signout, name='logout'),
     path('signin/', views.signin, name='signin'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
