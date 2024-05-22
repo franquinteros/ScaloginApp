@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'scaloginproject.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://postgres:postgres@localhost:5432/mysite',
+        default='postgres://scalogin_postgresql_user:Y9DYlDEnOyWvgg9rOoQPC1dOpziVgLFN@dpg-cp6sas20si5c73ajjnk0-a/scalogin_postgresql',
         conn_max_age=600
     )
 }
