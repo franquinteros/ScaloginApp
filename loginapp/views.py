@@ -23,7 +23,7 @@ def signup(request):
                 )
                 user.save()
                 login(request, user)
-                return redirect("dashboard")
+                return redirect("signin")
             except IntegrityError:
                 return render(
                     request,
