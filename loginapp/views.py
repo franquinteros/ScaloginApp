@@ -22,7 +22,7 @@ def signup(request):
                     password=request.POST["password1"],
                 )
                 user.save()
-                login(request, user)
+                #login(request, user)
                 return redirect("signin")
             except IntegrityError:
                 return render(
