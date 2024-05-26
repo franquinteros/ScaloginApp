@@ -83,7 +83,7 @@ def signin(request):
             return redirect("dashboard")
 
 def recover_password(request):
-    return render(request, "recover.html")
+    return redirect("dashboard")
 
 def key(request):
     if request.method == "GET":
