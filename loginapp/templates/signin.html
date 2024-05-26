@@ -2,6 +2,10 @@
 {% extends 'base.html' %} 
 {% load static %}
 {% block content %}
+<main class="container text-center">
+  {% block CustomCSS %}
+  <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+  {% endblock %}
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
       <path
@@ -25,9 +29,6 @@
       ></path>
     </symbol>
   </svg>
-  {% block CustomCSS %}
-  <link rel="stylesheet" href="{% static 'css/signin.css' %}">
-  {% endblock %}
   <form class="form-signin offset-md-4 mt-5" action="/signin/" method="POST">
     {% csrf_token %} 
     <img src="{% static "media/scalogin.gif" %}" alt= "Scalogin"
@@ -79,7 +80,7 @@
     
     <p class="mt-5 mb-3 text-body-secondary">© UADE 2024</p>
   </form>
-
+</main>
 <script>
   const passwordInput = document.getElementById('floatingPassword');
   document.getElementById('showPassword').addEventListener('click', function() {

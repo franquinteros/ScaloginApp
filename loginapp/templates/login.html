@@ -2,6 +2,9 @@
 {% load static %} 
 {% block content %}
 <main class="container text-center">
+  {% block CustomCSS %}
+  <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+  {% endblock %}
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
       <path
@@ -27,9 +30,6 @@
       ></path>
     </symbol>
   </svg>
-  {% block CustomCSS %}
-  <link rel="stylesheet" href="{% static 'css/signin.css' %}">
-  {% endblock %}
   <form class="form-signin offset-md-4 mt-5" action="/signup/" method="POST">
     {% csrf_token %}
     <img src="{% static "media/scalogin.gif" %}" alt= "Scalogin"
