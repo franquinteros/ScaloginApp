@@ -25,8 +25,10 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('logout/', views.signout, name='logout'),
-    path('dashboard/create/', views.crate_task, name='create_task'),
+    path('dashboard/create/', views.create_task, name='create_task'),
     path('signin/', views.signin, name='signin'),
+    path('signin/recover/', views.recover_password, name='recover'),
+    path('signup/keyword/', views.key, name='keyword'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

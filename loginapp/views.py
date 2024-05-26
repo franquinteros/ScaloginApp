@@ -10,7 +10,6 @@ from .forms import TaskForm
 def home(request):
     return render(request, "home.html")
 
-
 def signup(request):
     if request.method == "GET":
         return render(request, "login.html", {"form": UserCreationForm})
@@ -24,7 +23,7 @@ def signup(request):
                 )
                 user.save()
                 #login(request, user)
-                return redirect("signin")
+                return redirect("keyword")
             except IntegrityError:
                 return render(
                     request,
@@ -37,11 +36,10 @@ def signup(request):
             {"form": UserCreationForm, "error": "Password do not match"},
         )
 
-
 def dashboard(request):
     return render(request, "dashboard.html")
 
-def crate_task(request):
+def create_task(request):
     if request.method == 'GET':
         return render(request, 'create_task.html',{
         'form': TaskForm})
@@ -61,7 +59,6 @@ def crate_task(request):
 def signout(request):
     logout(request)
     return redirect('home')
-
 
 def signin(request):
     if request.method == "GET":
@@ -84,3 +81,31 @@ def signin(request):
         else:
             login(request, user)
             return redirect("dashboard")
+
+def recover_password(request):
+    return render(request, "recover.html")
+
+def key(request):
+    if request.method == "GET":
+        return render(request, "keyword.html", {"form": UserCreationForm})
+    else:
+        if request.POST["password1"] == request.POST["password2"]:
+            try:
+                # Registro de usuario
+                user = User.objects.create_key(
+                    key=request.POST["password1"],
+                )
+                user.save()
+                #login(request, user)   
+                return redirect("keyword")
+            except IntegrityError:
+                return render(
+                    request,
+                    "keyword.html",
+                )
+        return render(
+            request,
+            "keyword.html",
+            {"form": UserCreationForm, "error": "Password do not match"},
+        )
+    
