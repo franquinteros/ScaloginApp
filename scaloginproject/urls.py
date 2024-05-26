@@ -30,7 +30,6 @@ urlpatterns = [
     path('dashboard/create/', views.create_task, name='create_task'),
     path('signin/', views.signin, name='signin'),
     path('signin/recover/', views.recover_password, name='recover'),
-    path('signup/keyword/', views.key, name='keyword'),
 ] + static(settings.STATIC_URL,document_root= settings.STATIC_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

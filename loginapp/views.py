@@ -20,10 +20,11 @@ def signup(request):
                 user = User.objects.create_user(
                     username=request.POST["username"],
                     password=request.POST["password1"],
+                    key=request.POST["recoverypassword"],
                 )
                 user.save()
                 #login(request, user)
-                return redirect("keyword")
+                return redirect("signin")
             except IntegrityError:
                 return render(
                     request,
@@ -81,52 +82,10 @@ def signin(request):
         else:
             login(request, user)
             return redirect("dashboard")
-
+        
 def recover_password(request):
-    if request.method == "GET":
-        return render(request, "keyword.html", {"form": UserCreationForm})
-    else:
-        if request.POST["password1"] == request.POST["password2"]:
-            try:
-                # Registro de usuario
-                user = User.objects.create_key(
-                    key=request.POST["password1"],
-                )
-                user.save()
-                #login(request, user)   
-                return redirect("keyword")
-            except IntegrityError:
-                return render(
-                    request,
-                    "keyword.html",
-                )
-        return render(
-            request,
-            "keyword.html",
-            {"form": UserCreationForm, "error": "Password do not match"},
-        )
+    return render(request, "recover.html")
+    
+    
 
-def key(request):
-    if request.method == "GET":
-        return render(request, "keyword.html", {"form": UserCreationForm})
-    else:
-        if request.POST["password1"] == request.POST["password2"]:
-            try:
-                # Registro de usuario
-                user = User.objects.create_key(
-                    key=request.POST["password1"],
-                )
-                user.save()
-                #login(request, user)   
-                return redirect("keyword")
-            except IntegrityError:
-                return render(
-                    request,
-                    "keyword.html",
-                )
-        return render(
-            request,
-            "keyword.html",
-            {"form": UserCreationForm, "error": "Password do not match"},
-        )
     
