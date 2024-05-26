@@ -11,6 +11,7 @@ body {
   background-color:rgb(95, 95, 243);
   background-image: url(/static/media/fondo.jpg);
 }
+.main{background-image: url(/static/media/fondo.jpg);}
 
 .form-signin {
   width: 100%;

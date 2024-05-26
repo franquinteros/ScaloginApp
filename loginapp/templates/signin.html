@@ -55,10 +55,10 @@
         type="password"
         class="form-control"
         name="password"
-        id="floatingPassword"
+        id="password"
         placeholder="Password"
-      required//>
-      <label for="floatingPassword">Password</label>
+      />
+      <label for="password">Password</label>
       <i id="showPassword" class='bx bx-low-vision' style="cursor: pointer;"></i>
     </div>
 
@@ -76,13 +76,15 @@
       Sign in
     </button>
 
-    <a class = "btn btn-dark mt-1" href="/signup">¿Forgot your password?</a>
+    <button class="btn btn-dark w-100 py-2" type="submit">
+      ¿Forgot your password?
+    </button>
     
     <p class="mt-5 mb-3 text-body-secondary">© UADE 2024</p>
   </form>
 </main>
 <script>
-  const passwordInput = document.getElementById('floatingPassword');
+  const passwordInput = document.getElementById('password');
   document.getElementById('showPassword').addEventListener('click', function() {
     if (passwordInput.type === 'password1') {
       passwordInput.type = 'text';

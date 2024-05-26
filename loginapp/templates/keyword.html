@@ -44,7 +44,6 @@
     <div class="form-floating mt-1">
       <input
         type="password"
-        minlength="8"
         class="form-control"
         name="password"
         id="password"
@@ -61,7 +60,7 @@
 </main>
 
 <script>
-  const passwordInput = document.getElementById('floatingPassword');
+  const passwordInput = document.getElementById('password');
   document.getElementById('showPassword').addEventListener('click', function() {
     if (passwordInput.type === 'password') {
       passwordInput.type = 'text';
