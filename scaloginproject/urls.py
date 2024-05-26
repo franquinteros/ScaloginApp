@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from loginapp import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +31,6 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('signin/recover/', views.recover_password, name='recover'),
     path('signup/keyword/', views.key, name='keyword'),
-]
+] + static(settings.STATIC_URL,document_root= settings.STATIC_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
