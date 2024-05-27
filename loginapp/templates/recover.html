@@ -39,7 +39,7 @@
       height="160"
     />
     <h1 class="h3 mb-3 fw-normal">Recover password</h1>
-    {{error}}
+    {{error}} 
 
     <div class="form-floating mt-1">
       <input
@@ -49,7 +49,7 @@
         id="recoverypassword"
         placeholder="Password"
       required/>
-      <label for="password1">¿What primary school did you go to?</label>
+      <label for="recoverypassword">¿What primary school did you go to?</label>
       <i id="showPassword" class="bx bx-low-vision" style="cursor: pointer"></i>
     </div>
 
@@ -60,7 +60,7 @@
 </main>
 
 <script>
-  const passwordInput = document.getElementById('floatingPassword');
+  const passwordInput = document.getElementById('recoveryassword');
   document.getElementById('showPassword').addEventListener('click', function() {
     if (passwordInput.type === 'password') {
       passwordInput.type = 'text';

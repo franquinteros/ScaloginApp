@@ -23,7 +23,7 @@ def signup(request):
                     key=request.POST["recoverypassword"],
                 )
                 user.save()
-                #login(request, user)
+                # login(request, user)
                 return redirect("signin")
             except IntegrityError:
                 return render(
@@ -41,25 +41,25 @@ def dashboard(request):
     return render(request, "dashboard.html")
 
 def create_task(request):
-    if request.method == 'GET':
-        return render(request, 'create_task.html',{
-        'form': TaskForm})
+    if request.method == "GET":
+        return render(request, "create_task.html", {"form": TaskForm})
     else:
         try:
             form = TaskForm(request.POST)
-            new_task = form.save(commit = False) 
+            new_task = form.save(commit=False)
             new_task.user = request.user
             new_task.save()
-            return redirect('dashboard')
+            return redirect("dashboard")
         except ValueError:
-            return render (request, 'create_task.html',{
-            'form': TaskForm,
-            'error': 'Please provide valida data'
-            })
-        
+            return render(
+                request,
+                "create_task.html",
+                {"form": TaskForm, "error": "Please provide valida data"},
+            )
+
 def signout(request):
     logout(request)
-    return redirect('home')
+    return redirect("home")
 
 def signin(request):
     if request.method == "GET":
@@ -84,11 +84,25 @@ def signin(request):
             return redirect("dashboard")
         
 def recover_password(request):
-    return render(request, "recover.html")
+    if request.method == "GET":
+        return render(request, "recover.html", {"form": AuthenticationForm})
+    else:
+        user = authenticate(
+            request,
+            key = request.POST["recoverpassword"],
+        )
+        if user.key != request.POST["recoverpassword"] :
+            return render(
+                request,
+                "recover.html",
+                {
+                    "form": AuthenticationForm,
+                    "error": "Recovery password incorrect",
+                },
+            )
+        else:
+            login(request, user)
+            return redirect("dashboard")
 
 def about_us(request):
-    return render(request,"about_us.html")
-    
-    
-
-    
+    return render(request, "about_us.html")

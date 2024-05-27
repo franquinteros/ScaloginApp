@@ -31,6 +31,7 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('signin/recover/', views.recover_password, name='recover'),
     path('aboutus/', views.about_us, name='about_us'),
+    path('/', views.about_us, name='about_us'),
 ] + static(settings.STATIC_URL,document_root= settings.STATIC_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
