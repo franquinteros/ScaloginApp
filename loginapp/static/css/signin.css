@@ -13,6 +13,8 @@ body {
 }
 .main{background-image: url(/static/media/fondo.jpg);}
 
+.container{background-image: url(/static/media/fondo.jpg);}
+
 .form-signin {
   width: 100%;
   max-width: 330px;

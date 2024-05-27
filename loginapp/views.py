@@ -85,6 +85,9 @@ def signin(request):
         
 def recover_password(request):
     return render(request, "recover.html")
+
+def about_us(request):
+    return render(request,"about_us.html")
     
     
 
