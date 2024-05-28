@@ -5,7 +5,6 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import TaskForm
 
-
 # Create your views here.
 def home(request):
     return render(request, "home.html")
@@ -20,9 +19,9 @@ def signup(request):
                 user = User.objects.create_user(
                     username=request.POST["username"],
                     password=request.POST["password1"],
-                    key=request.POST["recoverypassword"],
                 )
                 user.save()
+                print (user.password)
                 # login(request, user)
                 return redirect("signin")
             except IntegrityError:
@@ -69,7 +68,7 @@ def signin(request):
             request,
             username=request.POST["username"],
             password=request.POST["password"],
-        )
+        ) 
         if user is None:
             return render(
                 request,
@@ -83,15 +82,14 @@ def signin(request):
             login(request, user)
             return redirect("dashboard")
         
-def recover_password(request):
     if request.method == "GET":
         return render(request, "recover.html", {"form": AuthenticationForm})
     else:
         user = authenticate(
             request,
-            key = request.POST["recoverpassword"],
+            key=request.POST["recoverpassword"],
         )
-        if user.key != request.POST["recoverpassword"] :
+        if user is None:
             return render(
                 request,
                 "recover.html",

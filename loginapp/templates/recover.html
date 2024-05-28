@@ -43,6 +43,17 @@
 
     <div class="form-floating mt-1">
       <input
+        type="username"
+        class="form-control"
+        name="username"
+        id="floatingInput"
+        placeholder="name@example.com"
+      required/>
+      <label for="floatingInput">Username</label>
+    </div> 
+
+    <div class="form-floating mt-1">
+      <input
         type="password"
         class="form-control"
         name="recoverypassword"
@@ -60,7 +71,7 @@
 </main>
 
 <script>
-  const passwordInput = document.getElementById('recoveryassword');
+  const passwordInput = document.getElementById('recoverypassword');
   document.getElementById('showPassword').addEventListener('click', function() {
     if (passwordInput.type === 'password') {
       passwordInput.type = 'text';

@@ -20,6 +20,7 @@ from loginapp import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,9 +30,15 @@ urlpatterns = [
     path('logout/', views.signout, name='logout'),
     path('dashboard/create/', views.create_task, name='create_task'),
     path('signin/', views.signin, name='signin'),
-    path('signin/recover/', views.recover_password, name='recover'),
     path('aboutus/', views.about_us, name='about_us'),
     path('/', views.about_us, name='about_us'),
+    #Reset password
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='password_reset_form.html'), name='password_reset'),
+    path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('password_reset_confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    
+    
 ] + static(settings.STATIC_URL,document_root= settings.STATIC_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
