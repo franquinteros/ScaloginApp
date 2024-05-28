@@ -18,6 +18,7 @@ def signup(request):
                 # Registro de usuario
                 user = User.objects.create_user(
                     username=request.POST["username"],
+                    email=request.POST["email"],
                     password=request.POST["password1"],
                 )
                 user.save()

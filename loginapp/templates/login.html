@@ -40,6 +40,19 @@
     />
     <h1 class="h3 mb-3 fw-normal">Signup</h1>
     {{error}}
+  </div>
+  <div class="form-floating mt-1">
+    <input
+      type="email"
+      class="form-control"
+      pattern="{@}"
+      name="email"
+      id="email"
+      placeholder="name@example.com"
+    required/>
+    <label for="username">Email</label>
+  </div>
+
     </div>
     <div class="form-floating mt-1">
       <input
@@ -50,7 +63,7 @@
         id="username"
         placeholder="name@example.com"
       required/>
-      <label for="username">Email adress</label>
+      <label for="username">Username</label>
     </div>
 
     <div class="form-floating mt-1">
