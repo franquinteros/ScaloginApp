@@ -29,12 +29,13 @@ def signup(request):
                 return render(
                     request,
                     "login.html",
-                    {"form": UserCreationForm, "error": "Username already exists"},
+                    {"form": UserCreationForm, "error": "El usuario ingresado ya existe"},
                 )
         return render(
             request,
             "login.html",
-            {"form": UserCreationForm, "error": "Password do not match"},
+            {"form": UserCreationForm, 
+            "error": "Las contraseñas no coinciden"},
         )
 
 def dashboard(request):
@@ -54,7 +55,7 @@ def create_task(request):
             return render(
                 request,
                 "create_task.html",
-                {"form": TaskForm, "error": "Please provide valida data"},
+                {"form": TaskForm, "error": "Por favor ingrese datos válidos"},
             )
 
 def signout(request):
@@ -76,7 +77,7 @@ def signin(request):
                 "signin.html",
                 {
                     "form": AuthenticationForm,
-                    "error": "Username or password is incorrect",
+                    "error": "Usuario o contraseña incorrectos",
                 },
             )
         else:
